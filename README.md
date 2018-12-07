@@ -1,1 +1,5 @@
-# zsudo
+# Z-SUDO
+
+Z-SUDO (aka zsudo)
+
+WORKING IN PROGRESS
