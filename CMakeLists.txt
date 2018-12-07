@@ -45,14 +45,35 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type (default Debug)" FORCE)
 endif()
 
+#
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 # Your should add git under your path,
 include(GetGitRevisionDescription)
 get_git_head_revision(GIT_REFSPEC GIT_SHA1)
 
+# Generate version code
 configure_file(
   ${CMAKE_SOURCE_DIR}/include/zsudoversion.h.cmake
   ${CMAKE_BINARY_DIR}/include/zsudoversion.h
+)
+
+# LTO support
+include(CheckIPOSupported)
+check_ipo_supported(RESULT lto_supported OUTPUT error)
+if(lto_supported)
+  message(STATUS "IPO/LTO enabled")
+else()
+  message(STATUS "IPO/LTO not supported: <${error}>")
+endif()
+
+# Force use C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+
+# Force use unicode
+add_definitions(
+  -D_UNICODE=1
+  -DUNICODE=1
 )
 
 include_directories(

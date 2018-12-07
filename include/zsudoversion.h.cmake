@@ -1,4 +1,4 @@
-/// Create by cmake, don't edit.
+// Generate code by cmake, don't modify
 #ifndef ZSUDOVERSION_H
 #define ZSUDOVERSION_H
 
