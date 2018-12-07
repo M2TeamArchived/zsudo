@@ -1,0 +1,14 @@
+#this is ignore file
+*.o
+*.a
+*.out
+*.exe
+*.dll
+*.obj
+*.res
+*.pdb
+*.swp
+*.s
+build/
+.vscode/*.browse*
+tags
