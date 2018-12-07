@@ -12,3 +12,4 @@
 build/
 .vscode/*.browse*
 tags
+/.vs
